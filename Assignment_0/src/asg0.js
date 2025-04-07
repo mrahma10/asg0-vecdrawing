@@ -107,37 +107,67 @@ function handleDrawEvent() {
   
     // Perform selected operation
     if (operation === "add") {
-        let v3 = new Vector3(v1).add(v2);
-        drawVector(v3, "green", ctx);
-      } else if (operation === "sub") {
-        let v3 = new Vector3(v1).sub(v2);
-        drawVector(v3, "green", ctx);
-      } else if (operation === "mul") {
-        let v3 = new Vector3(v1).mul(scalar);
-        let v4 = new Vector3(v2).mul(scalar);
-        drawVector(v3, "green", ctx);
-        drawVector(v4, "green", ctx);
-      } else if (operation === "div") {
-        let v3 = new Vector3(v1).div(scalar);
-        let v4 = new Vector3(v2).div(scalar);
-        drawVector(v3, "green", ctx);
-        drawVector(v4, "green", ctx);
-      } else if (operation === "magnitude") {
-        console.log("Magnitude v1:", v1.magnitude());
-        console.log("Magnitude v2:", v2.magnitude());
-      } else if (operation === "normalize") {
-        let v3 = new Vector3(v1.elements).normalize();
-        let v4 = new Vector3(v2.elements).normalize();
-        drawVector(v3, "green", ctx);
-        drawVector(v4, "green", ctx);
-      } else if (operation === "angle") {
-        let angle = angleBetween(v1, v2);
-        console.log("Angle between v1 and v2:", angle.toFixed(2), "degrees");
-      }
-      else if (operation === "area") {
-        let area = areaTriangle(v1, v2);
-        console.log("Area of triangle formed by v1 and v2:", area.toFixed(2));
-      }
+      let v3 = new Vector3([
+        v1.elements[0] + v2.elements[0],
+        v1.elements[1] + v2.elements[1],
+        0
+      ]);
+      drawVector(v3, "green", ctx);
+    
+    } else if (operation === "sub") {
+      let v3 = new Vector3([
+        v1.elements[0] - v2.elements[0],
+        v1.elements[1] - v2.elements[1],
+        0
+      ]);
+      drawVector(v3, "green", ctx);
+    
+    } else if (operation === "mul") {
+      let v3 = new Vector3([
+        v1.elements[0] * scalar,
+        v1.elements[1] * scalar,
+        0
+      ]);
+      let v4 = new Vector3([
+        v2.elements[0] * scalar,
+        v2.elements[1] * scalar,
+        0
+      ]);
+      drawVector(v3, "green", ctx);
+      drawVector(v4, "green", ctx);
+    
+    } else if (operation === "div") {
+      let v3 = new Vector3([
+        v1.elements[0] / scalar,
+        v1.elements[1] / scalar,
+        0
+      ]);
+      let v4 = new Vector3([
+        v2.elements[0] / scalar,
+        v2.elements[1] / scalar,
+        0
+      ]);
+      drawVector(v3, "green", ctx);
+      drawVector(v4, "green", ctx);
+    
+    } else if (operation === "magnitude") {
+      console.log("Magnitude v1:", v1.magnitude());
+      console.log("Magnitude v2:", v2.magnitude());
+    
+    } else if (operation === "normalize") {
+      let v3 = new Vector3(v1.elements).normalize();
+      let v4 = new Vector3(v2.elements).normalize();
+      drawVector(v3, "green", ctx);
+      drawVector(v4, "green", ctx);
+    
+    } else if (operation === "angle") {
+      let angle = angleBetween(v1, v2);
+      console.log("Angle between v1 and v2:", angle.toFixed(2), "degrees");
+    
+    } else if (operation === "area") {
+      let area = areaTriangle(v1, v2);
+      console.log("Area of triangle formed by v1 and v2:", area.toFixed(2));
+    }
       
       
   }
